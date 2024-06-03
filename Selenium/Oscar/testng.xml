@@ -1,0 +1,35 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+
+    <listeners>
+        <listener class-name="Configuration.Listeners"/>
+    </listeners>
+
+    <test name="E2E HEL Funnel Form">
+        <parameter name="browserName" value="firefox"></parameter>
+        <classes>
+            <class name="Test.E2E_Forms_HEL_Funnel"/>
+        </classes>
+    </test>
+
+    <test name="E2E Refinance Funnel Form">
+        <parameter name="browserName" value="firefox"></parameter>
+        <classes>
+            <class name="Test.E2E_Forms_Refinance_Funnel"/>
+        </classes>
+    </test>
+
+    <test name="E2E Renew Funnel Form">
+        <parameter name="browserName" value="firefox"></parameter>
+        <classes>
+            <class name="Test.E2E_Forms_Renew_Funnel"/>
+        </classes>
+    </test>
+
+    <test name="E2E Purchase Funnel Form">
+        <parameter name="browserName" value="firefox"></parameter>
+        <classes>
+            <class name="Test.E2E_Forms_Purchase_Funnel"/>
+        </classes>
+    </test>
+</suite>

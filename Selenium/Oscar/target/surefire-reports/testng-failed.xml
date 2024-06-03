@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [All Test Suite]" guice-stage="DEVELOPMENT" verbose="0">
+  <test thread-count="5" name="E2E HEL Funnel Form(failed)" verbose="0">
+    <parameter name="browserName" value="chrome"/>
+    <classes>
+      <class name="Test.E2E_Forms_HEL_Funnel">
+        <methods>
+          <include name="tearDown"/>
+          <include name="login"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- Test.E2E_Forms_HEL_Funnel -->
+    </classes>
+  </test> <!-- E2E HEL Funnel Form(failed) -->
+</suite> <!-- Failed suite [All Test Suite] -->
