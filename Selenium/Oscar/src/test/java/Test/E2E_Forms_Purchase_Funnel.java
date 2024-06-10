@@ -26,7 +26,39 @@ public class E2E_Forms_Purchase_Funnel extends BaseTest{
         pageFactory.getTestFunnelsPage().selectIAmShoppingForANewHome("oscar-purchase-form");
         pageFactory.getTestFunnelsPage().enterSubjectPropertyInStepOne(propertyAddress,"oscar-purchase-form");
         pageFactory.getTestFunnelsPage().clickOnContinueButton("oscar-purchase-form");
-        pageFactory.getTestFunnelsPage().fetchPurchasePrice("oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().fetchEstimatedPurchasePrice("oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().clickOnContinueButton("oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().enterPersonalDetailsInStepThree(firstname,lastname,phoneNumber,Email,"oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().enterAnnualIncome(annualIncome,"oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().clickOnContinueButton("oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().fetchDownPayment("oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().verifyTheProducts("oscar-purchase-form");
+    }
+
+    @Test(dataProvider="PurchaseFunnelsFormForGnowise",dependsOnMethods = "E2E_Purchase_Funnel_IAmShoppingForANewHome")
+    public void E2E_Purchase_Funnel_IHaveFoundMYNewHome(String url, String propertyAddress,String firstname, String lastname, String phoneNumber, String Email, String annualIncome) throws InterruptedException {
+        pageFactory.getTestFunnelsPage().GoToUrl(url);
+        pageFactory.getTestFunnelsPage().selectIHaveFoundMyNewHome("oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().enterSubjectPropertyInStepOne(propertyAddress,"oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().enterClosingDate("oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().clickOnContinueButton("oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().fetchEstimatedPurchasePrice("oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().clickOnContinueButton("oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().enterPersonalDetailsInStepThree(firstname,lastname,phoneNumber,Email,"oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().enterAnnualIncome(annualIncome,"oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().clickOnContinueButton("oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().fetchDownPayment("oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().verifyTheProducts("oscar-purchase-form");
+    }
+
+    @Test(dataProvider="PurchaseFunnelsFormForGnowise",dependsOnMethods = "E2E_Purchase_Funnel_IHaveFoundMYNewHome")
+    public void E2E_Purchase_Funnel_MyOfferHasBeenAccepted(String url, String propertyAddress,String firstname, String lastname, String phoneNumber, String Email, String annualIncome) throws InterruptedException {
+        pageFactory.getTestFunnelsPage().GoToUrl(url);
+        pageFactory.getTestFunnelsPage().selectMyOfferHaveBeenAccepted("oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().enterSubjectPropertyInStepOne(propertyAddress,"oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().enterClosingDate("oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().clickOnContinueButton("oscar-purchase-form");
+        pageFactory.getTestFunnelsPage().fetchEstimatedPurchasePrice("oscar-purchase-form");
         pageFactory.getTestFunnelsPage().clickOnContinueButton("oscar-purchase-form");
         pageFactory.getTestFunnelsPage().enterPersonalDetailsInStepThree(firstname,lastname,phoneNumber,Email,"oscar-purchase-form");
         pageFactory.getTestFunnelsPage().enterAnnualIncome(annualIncome,"oscar-purchase-form");

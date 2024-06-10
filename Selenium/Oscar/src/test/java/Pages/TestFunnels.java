@@ -240,6 +240,32 @@ public class TestFunnels {
         for (WebElement element : firstPurchaseOption) {
             // For example, click on each element
             element.click();
+            ExtentLogger.pass("Click On : I have found my new home");
+            Thread.sleep(3000);
+        }
+    }
+
+    public void selectMyOfferHaveBeenAccepted(String formSelector) throws InterruptedException {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        List<WebElement> firstPurchaseOption = (List<WebElement>) jsExecutor.executeScript(
+                "return document.querySelector('"+formSelector+"').shadowRoot.querySelectorAll('div[class=\"btn-container cont-4\"]');");
+        // Perform actions on the elements within the shadow DOM
+        for (WebElement element : firstPurchaseOption) {
+            // For example, click on each element
+            element.click();
+            ExtentLogger.pass("Click On : My offer have been accepted");
+            Thread.sleep(3000);
+        }
+    }
+
+    public void selectIHaveFoundMyNewHome(String formSelector) throws InterruptedException {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        List<WebElement> firstPurchaseOption = (List<WebElement>) jsExecutor.executeScript(
+                "return document.querySelector('"+formSelector+"').shadowRoot.querySelectorAll('div[class=\"btn-container cont-3\"]');");
+        // Perform actions on the elements within the shadow DOM
+        for (WebElement element : firstPurchaseOption) {
+            // For example, click on each element
+            element.click();
             ExtentLogger.pass("Click On : I am shopping for a new home");
             Thread.sleep(3000);
         }
@@ -262,6 +288,7 @@ public class TestFunnels {
             ExtentLogger.fail("Element not found"); // Handle case where element is not found
         }
     }
+
     public void fetchDownPayment(String formSelector) throws InterruptedException {
         Thread.sleep(5000);
         // Execute JavaScript to find the input element within shadow DOM
@@ -277,15 +304,35 @@ public class TestFunnels {
         }
     }
 
-    public void enterPropertyValueInStepThree(String propertyValue,String formSelector) throws InterruptedException {
+    public void fetchEstimatedPurchasePrice(String formSelector) throws InterruptedException {
+        Thread.sleep(5000);
+        // Execute JavaScript to find the input element within shadow DOM
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        List<WebElement> enterPropertyValue = (List<WebElement>) jsExecutor.executeScript(
+        WebElement purchasePrice = (WebElement) jsExecutor.executeScript(
+                "return document.querySelector('"+formSelector+"').shadowRoot.querySelector('input[name=\"annualIncome\"]');");
+
+        // Check if the element is not null
+        if (purchasePrice != null) {
+            // Retrieve the value attribute of the input element
+            String value = purchasePrice.getAttribute("value");
+            // If you want to print the value to console
+            ExtentLogger.pass("Total purchase price is :- " + value);
+        } else {
+            ExtentLogger.fail("Element not found"); // Handle case where element is not found
+        }
+    }
+
+    public void enterClosingDate(String formSelector) throws InterruptedException {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        List<WebElement> enterClosingDate = (List<WebElement>) jsExecutor.executeScript(
                 "return document.querySelector('"+formSelector+"').shadowRoot.querySelectorAll('input[name=\"PropertyValue\"]');");
         // Perform actions on the elements within the shadow DOM
-        for (WebElement element : enterPropertyValue) {
+        for (WebElement element : enterClosingDate) {
             // For example, click on each element
-            element.sendKeys(propertyValue);
-            ExtentLogger.pass("Enter property value:- "+propertyValue);
+            element.click();
+            element.sendKeys("05062025");
+            Thread.sleep(3000);
+            ExtentLogger.pass("Enter property value:- "+"05/06/2025");
             Thread.sleep(3000);
         }
     }
